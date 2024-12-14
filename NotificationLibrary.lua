@@ -1,6 +1,6 @@
 local notif = {}
 
-function notif.new(title,desc,font,font2,visibletime)
+function notif:Notify(title,desc,font,font2,visibletime)
 	pcall(function()
 		local screenGui = Instance.new("ScreenGui", game:GetService("CoreGui"))
 
