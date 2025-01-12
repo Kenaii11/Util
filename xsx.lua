@@ -19,20 +19,7 @@ local HUI = gethui();
 
 
 -- / Locals
-local Player = Players.LocalPlayer
-local Mouse = setmetatable({}, {
-    __index = function(self, key)
-        local mouse_location = UserInputService:GetMouseLocation();
 
-        if (key == "X") then
-            return mouse_location.X;
-        elseif (key == "Y") then
-            return mouse_location.Y - 58;
-        end
-
-        return mouse_location;
-    end
-});
 
 
 
@@ -2711,7 +2698,19 @@ local function getDragIt()
         local Utils = initUtils()
 
         local Player = game.Players.LocalPlayer
-        local Mouse = Player:GetMouse()
+        local Mouse = setmetatable({}, {
+            __index = function(self, key)
+                local mouse_location = UserInputService:GetMouseLocation();
+        
+                if (key == "X") then
+                    return mouse_location.X;
+                elseif (key == "Y") then
+                    return mouse_location.Y - 58;
+                end
+        
+                return mouse_location;
+            end
+        });
         local drag = {}
         local Events = {}
         local Holding = false
@@ -3218,11 +3217,25 @@ local EffectLib = getEffect()
 local CircleClick = function(Button)
     local circle = Instance.new("Frame");
     Instance.new("UICorner", circle);
+
+    local Mouse = setmetatable({}, {
+        __index = function(self, key)
+            local mouse_location = UserInputService:GetMouseLocation();
     
+            if (key == "X") then
+                return mouse_location.X;
+            elseif (key == "Y") then
+                return mouse_location.Y - 58;
+            end
+    
+            return mouse_location;
+        end
+    });
+
     circle.UICorner.CornerRadius = UDim.new(1, 0);
     circle.AnchorPoint = Vector2.new(0.5, 0.5);
     circle.BackgroundColor3 = Color3.fromRGB(0,0,0);
-    circle.Position = UDim2.new(0, game.Players.LocalPlayer:GetMouse().X - Button.AbsolutePosition.X, 0, game.Players.LocalPlayer:GetMouse().Y - Button.AbsolutePosition.Y);
+    circle.Position = UDim2.new(0, Mouse.X - Button.AbsolutePosition.X, 0, Mouse.Y - Button.AbsolutePosition.Y);
     circle.Size = UDim2.new(0, 1, 0, 1);
     circle.Transparency = .8;
     circle.ZIndex = 999
@@ -3941,9 +3954,25 @@ function UILibrary.Window:Category(name, icon)
     )
     local Click = EffectLib.ButtonClickEffect(category)
 
+
+
     Click.Event:Connect(
         function()
-            CircleClick(category, LocalPlayer:GetMouse().X, LocalPlayer:GetMouse().Y)
+            local Mouse = setmetatable({}, {
+                __index = function(self, key)
+                    local mouse_location = UserInputService:GetMouseLocation();
+            
+                    if (key == "X") then
+                        return mouse_location.X;
+                    elseif (key == "Y") then
+                        return mouse_location.Y - 58;
+                    end
+            
+                    return mouse_location;
+                end
+            });
+            
+            CircleClick(category, Mouse.X, Mouse.Y)
 
             self:ChangeCategory(name)
         end
@@ -4016,7 +4045,22 @@ function UILibrary.Category:Button(name, icon)
 
     Click.Event:Connect(
         function()
-            CircleClick(button, LocalPlayer:GetMouse().X, LocalPlayer:GetMouse().Y)
+            local Mouse = setmetatable({}, {
+                __index = function(self, key)
+                    local mouse_location = UserInputService:GetMouseLocation();
+            
+                    if (key == "X") then
+                        return mouse_location.X;
+                    elseif (key == "Y") then
+                        return mouse_location.Y - 58;
+                    end
+            
+                    return mouse_location;
+                end
+            });
+
+
+            CircleClick(button, Mouse.X, Mouse.Y)
 
             if self.oldSelf.currentSelection.Name == self.categoryUI.Name then
                 self.oldSelf:ChangeCategorySelection(name)
@@ -5137,7 +5181,21 @@ function UILibrary.Section:Slider(sett, callback)
     RunService.RenderStepped:Connect(
         function()
             if holding then
-                local mouseX = LocalPlayer:GetMouse().X
+                Mouse = setmetatable({}, {
+                    __index = function(self, key)
+                        local mouse_location = UserInputService:GetMouseLocation();
+                
+                        if (key == "X") then
+                            return mouse_location.X;
+                        elseif (key == "Y") then
+                            return mouse_location.Y - 58;
+                        end
+                
+                        return mouse_location;
+                    end
+                });
+
+                local mouseX = Mouse.X
                 local sliderPos = element.Drag.AbsolutePosition.X
 
                 local leftBoundary = element.Drag.AbsolutePosition.X - (element.Drag.AbsoluteSize.X)
