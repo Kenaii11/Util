@@ -4,7 +4,7 @@
   - Please do not use this without permission, I am working really hard on this UI to make it perfect and do not have a big 
     problem with other people using it, please just make sure you message me and ask me before using.
 ]]
-
+print("hui")
 
 local cloneref = cloneref or function(...) return ...; end;
 local gethui = gethui or function() return cloneref(game:GetService("CoreGui")); end
@@ -256,7 +256,7 @@ function library:Watermark(text)
     local backgroundLayout = Instance.new("UIListLayout")
 
     watermark.Name = "watermark"
-    watermark.Parent = CoreGuiService
+    watermark.Parent = HUI or CoreGuiService
     watermark.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
     watermarkLayout.Name = "watermarkLayout"
