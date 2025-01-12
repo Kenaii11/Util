@@ -2700,7 +2700,7 @@ local function getDragIt()
         local Player = game.Players.LocalPlayer
         local Mouse = setmetatable({}, {
             __index = function(self, key)
-                local mouse_location = UserInputService:GetMouseLocation();
+                local mouse_location = GetService.UserInputService:GetMouseLocation();
         
                 if (key == "X") then
                     return mouse_location.X;
@@ -3220,7 +3220,7 @@ local CircleClick = function(Button)
 
     local Mouse = setmetatable({}, {
         __index = function(self, key)
-            local mouse_location = UserInputService:GetMouseLocation();
+            local mouse_location = GetService.UserInputService:GetMouseLocation();
     
             if (key == "X") then
                 return mouse_location.X;
@@ -3960,7 +3960,7 @@ function UILibrary.Window:Category(name, icon)
         function()
             local Mouse = setmetatable({}, {
                 __index = function(self, key)
-                    local mouse_location = UserInputService:GetMouseLocation();
+                    local mouse_location = GetService.UserInputService:GetMouseLocation();
             
                     if (key == "X") then
                         return mouse_location.X;
@@ -3971,7 +3971,7 @@ function UILibrary.Window:Category(name, icon)
                     return mouse_location;
                 end
             });
-            
+
             CircleClick(category, Mouse.X, Mouse.Y)
 
             self:ChangeCategory(name)
@@ -4047,7 +4047,7 @@ function UILibrary.Category:Button(name, icon)
         function()
             local Mouse = setmetatable({}, {
                 __index = function(self, key)
-                    local mouse_location = UserInputService:GetMouseLocation();
+                    local mouse_location = GetService.UserInputService:GetMouseLocation();
             
                     if (key == "X") then
                         return mouse_location.X;
