@@ -25,8 +25,7 @@ local Players = GetService.Players;
 local RunService = GetService.RunService;
 local TweenService = GetService.TweenService;
 local RenderStepped = RunService.RenderStepped;
-local CoreGuiService = GetService.CoreGui
-local ContentService = GetService.ContentProvider
+local HUI = GetService.CoreGui
 local TeleportService = GetService.TeleportService
 local Workspace = GetService.Workspace
 
@@ -231,7 +230,7 @@ function library:UnlockFps(new) -- syn only
 end
 
 function library:Watermark(text)
-    for i,v in pairs(CoreGuiService:GetChildren()) do
+    for i,v in pairs(HUI:GetChildren()) do
         if v.Name == "watermark" then
             v:Destroy()
         end
@@ -256,7 +255,7 @@ function library:Watermark(text)
     local backgroundLayout = Instance.new("UIListLayout")
 
     watermark.Name = "watermark"
-    watermark.Parent = HUI or CoreGuiService
+    watermark.Parent = HUI or HUI
     watermark.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
     watermarkLayout.Name = "watermarkLayout"
@@ -529,7 +528,7 @@ function library:Watermark(text)
 end
 
 function library:InitNotifications(text, duration, callback)
-    for i,v in next, CoreGuiService:GetChildren() do
+    for i,v in next, HUI:GetChildren() do
         if v.name == "Notifications" then
             v:Destroy()
         end
@@ -540,7 +539,7 @@ function library:InitNotifications(text, duration, callback)
     local notificationsPadding = Instance.new("UIPadding")
 
     Notifications.Name = "Notifications"
-    Notifications.Parent = CoreGuiService
+    Notifications.Parent = HUI
     Notifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     notificationsLayout.Name = "notificationsLayout"
@@ -710,7 +709,7 @@ function library:InitNotifications(text, duration, callback)
 end
 
 function library:Introduction()
-    for _,v in next, CoreGuiService:GetChildren() do
+    for _,v in next, HUI:GetChildren() do
         if v.Name == "screen" then
             v:Destroy()
         end
@@ -734,7 +733,7 @@ function library:Introduction()
     local pageLayout = Instance.new("UIListLayout")
     
     introduction.Name = "introduction"
-    introduction.Parent = CoreGuiService
+    introduction.Parent = HUI
     introduction.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
     edge.Name = "edge"
@@ -877,7 +876,7 @@ function library:Introduction()
 end
 
 function library:Init(key)
-    for _,v in next, CoreGuiService:GetChildren() do
+    for _,v in next, HUI:GetChildren() do
         if v.Name == "screen" then
             v:Destroy()
         end
@@ -912,7 +911,7 @@ function library:Init(key)
     local containerGradient = Instance.new("UIGradient")
 
     screen.Name = "screen"
-    screen.Parent = CoreGuiService
+    screen.Parent = HUI
     screen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     edge.Name = "edge"
