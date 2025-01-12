@@ -5181,9 +5181,9 @@ function UILibrary.Section:Slider(sett, callback)
     RunService.RenderStepped:Connect(
         function()
             if holding then
-                Mouse = setmetatable({}, {
+                local Mouse = setmetatable({}, {
                     __index = function(self, key)
-                        local mouse_location = UserInputService:GetMouseLocation();
+                        local mouse_location = GetService.UserInputService:GetMouseLocation();
                 
                         if (key == "X") then
                             return mouse_location.X;
