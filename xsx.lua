@@ -4,7 +4,7 @@
   - Please do not use this without permission, I am working really hard on this UI to make it perfect and do not have a big 
     problem with other people using it, please just make sure you message me and ask me before using.
 ]]
-print("hui")
+
 
 local cloneref = cloneref or function(...) return ...; end;
 local gethui = gethui or function() return cloneref(game:GetService("CoreGui")); end
@@ -793,7 +793,7 @@ function library:Introduction()
     xsxLogo.Position = UDim2.new(0.5, 0, 0.5, 0)
     xsxLogo.Size = UDim2.new(0, 448, 0, 150)
     xsxLogo.Visible = true
-    xsxLogo.Image = "http://www.roblox.com/asset/?id=9365068051"
+    xsxLogo.Image = getcustomasset("http://www.roblox.com/asset/?id=9365068051")
     xsxLogo.ImageColor3 = Color3.fromRGB(159, 115, 255)
     xsxLogo.ImageTransparency = 1
     
@@ -1090,10 +1090,10 @@ function library:Init(key)
         page.BackgroundTransparency = 1.000
         page.BorderSizePixel = 0
         page.Size = UDim2.new(0, 412, 0, 358)
-        page.BottomImage = "http://www.roblox.com/asset/?id=3062506202"
-        page.MidImage = "http://www.roblox.com/asset/?id=3062506202"
+        page.BottomImage = getcustomasset("http://www.roblox.com/asset/?id=3062506202")
+        page.MidImage = getcustomasset("http://www.roblox.com/asset/?id=3062506202")
         page.ScrollBarThickness = 1
-        page.TopImage = "http://www.roblox.com/asset/?id=3062506202"
+        page.TopImage = getcustomasset("http://www.roblox.com/asset/?id=3062506202")
         page.ScrollBarImageColor3 = Color3.fromRGB(159, 115, 255)
         page.Visible = false
         
