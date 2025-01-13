@@ -2,8 +2,6 @@
 Octohook ui lib informant version
 Developed by liam#4567
 Edited by xz#1111
-
-Updated Detectable Colorpickers by Kenaii
 ]]
 
 -- // Load
@@ -657,14 +655,14 @@ function library:init()
 
     local screenGui = Instance.new('ScreenGui');
     if syn then syn.protect_gui(screenGui); end
-    screenGui.Parent = hui or game:GetService('CoreGui');
+    screenGui.Parent = hui or cloneref(game:GetService("CoreGui")) or game:GetService("CoreGui");
     screenGui.Enabled = true;
     utility:Instance('ImageButton', {
         Parent = screenGui,
         Visible = true,
         Modal = true,
         Size = UDim2.new(1,0,1,0),
-        ZIndex = 9999999999,
+        ZIndex = 9999999,
         Transparency = 1;
     })
 
